@@ -1,4 +1,5 @@
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
@@ -22,7 +23,7 @@ nav{
 }
 
 .sportmilk{
-  padding-left: 10vh;
+  padding-left: 17vh;
 }
 
 .feed-body{
@@ -33,9 +34,10 @@ nav{
 }
 
 .feed-right{
-  width: 50vw;
-  background-color: red;
-
+  width: 60vw;
+  /* background-color: red; */
+  display: flex;
+  /* justify-content: center; */
 }
 
 .feed-left{
@@ -45,6 +47,14 @@ nav{
   justify-content: center;
 
 }
+
+.right-content{
+  /* background-color: purple; */
+  width: 40vw;
+
+  
+}
+
 
 .left-content{
   /* background-color: purple; */
@@ -59,4 +69,8 @@ form{
 .Footer{
   height: 50vh;
   background-color: black;
+}
+
+.Card-main{
+  height: 15vh;
 }

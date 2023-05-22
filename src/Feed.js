@@ -1,15 +1,54 @@
-import React, { useState }  from "react";
+import React, { useState, useEffect}  from "react";
 import "./App.css";
 import { Link } from "react-router-dom";
 import TextField from "@material-ui/core/TextField";
 import Button from "@mui/material/Button";
 import Footer from "./Footer.js"
+import { format } from "date-fns";
+import { enUS } from "date-fns/locale";
+import Card from "./Card.js"
 
 
 
 function Feed() {
-    const [email, setEmail] = useState("");
+  const [data, setData] = useState([]);
+  const [email, setEmail] = useState("");
+  const currentDate = new Date();
+  const formattedDateDay = format(currentDate, "iiii", {
+    locale: enUS,
+  });
+  const formattedDateMonthYear = format(currentDate, "MMMM do, yyyy", {
+    locale: enUS,
+  });
 
+  //"https://jsonplaceholder.typicode.com/posts"
+  //   "https://newsapi.org/v2/top-headlines?country=ca&apiKey=eca70018580445b6b32680186ff03061";
+//   const fetchData = () => {
+    
+//     fetch(
+//       "https://newsapi.org/v2/top-headlines?country=ca&apiKey=eca70018580445b6b32680186ff03061"
+//     )
+//       .then((response) => response.json())
+//       .then((json) => {
+//         console.log(json);
+//         setData(json);
+//       });
+//   };
+
+  const fetchData = () => {
+    fetch(
+        "https://newsapi.org/v2/top-headlines?country=ca&apiKey=eca70018580445b6b32680186ff03061"
+    )
+        .then((response) => response.json())
+        .then((json) => {
+        console.log(json);
+        setData(json.articles); // Update the state with the articles array
+        });
+    };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   return (
     <div className="Feed">
@@ -63,7 +102,46 @@ function Feed() {
             </h5>
           </div>
         </div>
-        <div className="feed-right">sf</div>
+        <div className="feed-right">
+          <div className="right-content">
+            <h3 style={{ paddingTop: "15vh", color: "grey" }}>
+              {formattedDateDay}
+            </h3>
+
+            <h3 style={{ fontSize: "5vh" }}>{formattedDateMonthYear}</h3>
+            <div style={{ paddingTop: "2vh" }}>
+              <h2
+                style={{
+                  paddingBottom: "6vh",
+                  fontSize: "1.8vh",
+                  color: "grey",
+                }}
+              >
+                The right way to set goals for growth, content strategy for
+                horizontal SaaS, asking about career goals in 1:1's, and more.
+              </h2>
+              {/* <Card /> */}
+              <div>
+                {data.length > 0 ? (
+                  <ul>
+                    {data.map((item, index) => (
+                      <div key={index}>
+                        <Card
+                          title={item.title}
+                          author={item.author}
+                          description={item.content}
+                          url = {item.url}
+                        />
+                      </div>
+                    ))}
+                  </ul>
+                ) : (
+                  <p>Loading...</p>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <Footer />
     </div>
@@ -71,3 +149,9 @@ function Feed() {
 }
 
 export default Feed;
+
+// {
+//   <div key={index}>
+//   <Card title={item.title} author={item.author} description={item.decription} />
+// </div>; 
+// }
