@@ -1,11 +1,13 @@
 import React from "react";
-import "./App.css";
+import "./Footer.css";
 
 
-function Blog() {
+function Footer() {
   return (
-    <div className="Footer"></div>
+    <div className="Footer">
+      <p style={{color: "white", fontSize: "1.3vh"}}>&copy; 2023 Sport Milk LLC. All rights reserved</p>
+    </div>
   );
 }
 
-export default Blog;
+export default Footer;

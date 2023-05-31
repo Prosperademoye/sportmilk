@@ -21,29 +21,15 @@ function Feed() {
     locale: enUS,
   });
 
-  //"https://jsonplaceholder.typicode.com/posts"
-  //   "https://newsapi.org/v2/top-headlines?country=ca&apiKey=eca70018580445b6b32680186ff03061";
-//   const fetchData = () => {
-    
-//     fetch(
-//       "https://newsapi.org/v2/top-headlines?country=ca&apiKey=eca70018580445b6b32680186ff03061"
-//     )
-//       .then((response) => response.json())
-//       .then((json) => {
-//         console.log(json);
-//         setData(json);
-//       });
-//   };
-
   const fetchData = () => {
     fetch(
-        "https://newsapi.org/v2/top-headlines?country=ca&apiKey=eca70018580445b6b32680186ff03061"
+      "https://newsapi.org/v2/top-headlines?country=us&category=sports&apiKey=eca70018580445b6b32680186ff03061"
     )
-        .then((response) => response.json())
-        .then((json) => {
+      .then((response) => response.json())
+      .then((json) => {
         console.log(json);
         setData(json.articles); // Update the state with the articles array
-        });
+      });
     };
 
   useEffect(() => {
@@ -52,15 +38,17 @@ function Feed() {
 
   return (
     <div className="Feed">
-      <nav>
-        <h2 className="sportmilk">sportmilk</h2>
-        <div className="nav-items">
-          <h3>Feed</h3>
-          <Link to="/Topics">topic</Link>
-          <Link to="/Blog">Blog</Link>
-          <Link to="/About">About</Link>
-        </div>
-      </nav>
+      <div className="navbar">
+        <nav>
+          <h2 className="sportmilk">sportmilk</h2>
+          <div className="nav-items">
+            <h3>Feed</h3>
+            <Link to="/Topics">topic</Link>
+            <Link to="/Blog">Blog</Link>
+            <Link to="/About">About</Link>
+          </div>
+        </nav>
+      </div>
 
       <div className="feed-body">
         <div className="feed-left">
@@ -109,7 +97,7 @@ function Feed() {
             </h3>
 
             <h3 style={{ fontSize: "5vh" }}>{formattedDateMonthYear}</h3>
-            <div style={{ paddingTop: "2vh" }}>
+            <div style={{ paddingTop: "2vh" }} className="news">
               <h2
                 style={{
                   paddingBottom: "6vh",
@@ -125,12 +113,12 @@ function Feed() {
                 {data.length > 0 ? (
                   <ul>
                     {data.map((item, index) => (
-                      <div key={index}>
+                      <div key={index} className="newss">
                         <Card
                           title={item.title}
                           author={item.author}
                           description={item.content}
-                          url = {item.url}
+                          url={item.url}
                         />
                       </div>
                     ))}
@@ -143,7 +131,11 @@ function Feed() {
           </div>
         </div>
       </div>
-      <Footer />
+      <div className="Footer">
+        <p style={{ color: "white", fontSize: "1.3vh" }}>
+          &copy; 2023 Sport Milk LLC. All rights reserved
+        </p>
+      </div>
     </div>
   );
 }

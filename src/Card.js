@@ -3,7 +3,6 @@ import "./App.css";
 
 
 
-
 function Card({ title, author, url , description}) {
   const sourceIndex = title.lastIndexOf("-");
   const modifiedTitle = title.slice(0, sourceIndex).trim();
@@ -23,7 +22,7 @@ function Card({ title, author, url , description}) {
         {modifiedTitle}
       </a>
       <h4 style={{ paddingBottom: "1vh" }}>{author}</h4>
-      <h4>{description}</h4>
+      <h4 style={{paddingBottom: "2vh", color: "grey"}} className="description">{description}</h4>
     </div>
   );
 }
