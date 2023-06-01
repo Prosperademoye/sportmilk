@@ -46,7 +46,7 @@ nav{
 }
 
 .right-content{
-  width: 40vw;
+  width: 45vw;
   overflow: scroll;
 
   
@@ -66,7 +66,7 @@ form{
 
 .Card-main{
   height: 18vh;
-  padding-bottom: 3vh;
+  padding-bottom: 5vh;
 }
 
 .news{
@@ -90,6 +90,10 @@ form{
   font-family: 'Lora';
   text-decoration: none;
   color: black;
+}
+
+.navvy:hover{
+  text-decoration: underline;
 }
 .title:hover{
   text-decoration: underline !important;

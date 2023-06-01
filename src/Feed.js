@@ -26,8 +26,8 @@ function Feed() {
     )
       .then((response) => response.json())
       .then((json) => {
-        const LimitedTopics = json.articles.slice(0,8)
-        // console.log(json);
+        const LimitedTopics = json.articles.slice(0,112)
+        console.log(LimitedTopics);
         setData(LimitedTopics); // Update the state with the articles array
       });
     };

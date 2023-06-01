@@ -22,7 +22,7 @@ function Card({ title, author, url , description}) {
       >
         {modifiedTitle}
       </a>
-      <p style={{ paddingBottom: "1vh" }}>{author}</p>
+      <p style={{  paddingBottom: "0.5vh" }}>{author}</p>
       {description ? (
         <p
           style={{ paddingBottom: "2vh", color: "grey" }}
@@ -31,7 +31,14 @@ function Card({ title, author, url , description}) {
           {description}
         </p>
       ) : (
-        <p style={{ paddingBottom: "2vh", color: "black" , textAlign: "center", paddingTop: "3vh"}}>
+        <p
+          style={{
+            paddingBottom: "2vh",
+            color: "black",
+            textAlign: "center",
+            paddingTop: "3vh",
+          }}
+        >
           Oops, error retrieving description
         </p>
       )}
