@@ -3,7 +3,6 @@ import "./App.css";
 import { Link } from "react-router-dom";
 import TextField from "@material-ui/core/TextField";
 import Button from "@mui/material/Button";
-import Footer from "./Footer.js"
 import { format } from "date-fns";
 import { enUS } from "date-fns/locale";
 import Card from "./Card.js"
@@ -27,8 +26,9 @@ function Feed() {
     )
       .then((response) => response.json())
       .then((json) => {
-        console.log(json);
-        setData(json.articles); // Update the state with the articles array
+        const LimitedTopics = json.articles.slice(0,8)
+        // console.log(json);
+        setData(LimitedTopics); // Update the state with the articles array
       });
     };
 
@@ -38,17 +38,23 @@ function Feed() {
 
   return (
     <div className="Feed">
-      <div className="navbar">
-        <nav>
-          <h2 className="sportmilk">sportmilk</h2>
-          <div className="nav-items">
-            <h3>Feed</h3>
-            <Link to="/Topics">topic</Link>
-            <Link to="/Blog">Blog</Link>
-            <Link to="/About">About</Link>
-          </div>
-        </nav>
-      </div>
+      
+      <nav>
+        <h2 className="sportmilk">sportmilk</h2>
+        <div className="nav-items">
+          <h3>Feed</h3>
+          <Link to="/Topics" className="navvy">
+            Topic
+          </Link>
+          <Link to="/Blog" className="navvy">
+            Blog
+          </Link>
+          <Link to="/About" className="navvy">
+            About
+          </Link>
+        </div>
+      </nav>
+      
 
       <div className="feed-body">
         <div className="feed-left">
@@ -97,36 +103,36 @@ function Feed() {
             </h3>
 
             <h3 style={{ fontSize: "5vh" }}>{formattedDateMonthYear}</h3>
+            <h2
+              style={{
+                paddingBottom: "3vh",
+                paddingTop: "1vh",
+                fontSize: "1.8vh",
+                color: "grey",
+              }}
+            >
+              The right way to set goals for growth, content strategy for
+              horizontal SaaS, asking about career goals in 1:1's, and more.
+            </h2>
             <div style={{ paddingTop: "2vh" }} className="news">
-              <h2
-                style={{
-                  paddingBottom: "6vh",
-                  fontSize: "1.8vh",
-                  color: "grey",
-                }}
-              >
-                The right way to set goals for growth, content strategy for
-                horizontal SaaS, asking about career goals in 1:1's, and more.
-              </h2>
-              {/* <Card /> */}
-              <div>
-                {data.length > 0 ? (
-                  <ul>
-                    {data.map((item, index) => (
-                      <div key={index} className="newss">
-                        <Card
-                          title={item.title}
-                          author={item.author}
-                          description={item.content}
-                          url={item.url}
-                        />
-                      </div>
-                    ))}
-                  </ul>
-                ) : (
-                  <p>Loading...</p>
-                )}
-              </div>
+              
+              {data.length > 0 ? (
+                <ul>
+                  {data.map((item, index) => (
+                    <div key={index}>
+                      <Card
+                        title={item.title}
+                        author={item.author}
+                        description={item.content}
+                        url={item.url}
+                      />
+                    </div>
+                  ))}
+                </ul>
+              ) : (
+                <p>Loading...</p>
+              )}
+              
             </div>
           </div>
         </div>
@@ -142,8 +148,3 @@ function Feed() {
 
 export default Feed;
 
-// {
-//   <div key={index}>
-//   <Card title={item.title} author={item.author} description={item.decription} />
-// </div>; 
-// }

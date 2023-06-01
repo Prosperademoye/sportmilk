@@ -15,14 +15,26 @@ function Card({ title, author, url , description}) {
         style={{
           color: "black",
           textDecoration: "none",
-          fontSize: "2.2vh",
-          fontWeight: "bold",
+          fontSize: "1.5em",
+          fontWeight: "700",
         }}
+        className="title"
       >
         {modifiedTitle}
       </a>
-      <h4 style={{ paddingBottom: "1vh" }}>{author}</h4>
-      <h4 style={{paddingBottom: "2vh", color: "grey"}} className="description">{description}</h4>
+      <p style={{ paddingBottom: "1vh" }}>{author}</p>
+      {description ? (
+        <p
+          style={{ paddingBottom: "2vh", color: "grey" }}
+          className="description"
+        >
+          {description}
+        </p>
+      ) : (
+        <p style={{ paddingBottom: "2vh", color: "black" , textAlign: "center", paddingTop: "3vh"}}>
+          Oops, error retrieving description
+        </p>
+      )}
     </div>
   );
 }

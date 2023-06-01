@@ -10,7 +10,7 @@ nav{
   flex-direction: row;
   justify-content: space-between;
   height: 7vh;
-  border-bottom: 1px #ccc solid;
+  box-shadow: 1px 1px 8px -1px rgba(26,27,28,.1);
   align-items: center;
 }
 
@@ -29,36 +29,31 @@ nav{
 
 .feed-body{
   height: 92.9vh;
-  background-color: rgb(250, 248, 248);
   display: flex;
   flex-direction: row;
 }
 
 .feed-right{
   width: 60vw;
-  /* background-color: red; */
   display: flex;
-  /* justify-content: center; */
 }
 
 .feed-left{
   display: flex;
   width: 50vw;
-  /* background-color: green; */
   justify-content: center;
 
 }
 
 .right-content{
-  /* background-color: purple; */
   width: 40vw;
+  overflow: scroll;
 
   
 }
 
 
 .left-content{
-  /* background-color: purple; */
   width: 30vw;
   padding-top: 15vh;
 }
@@ -70,34 +65,32 @@ form{
 
 
 .Card-main{
-  height: 15vh;
+  height: 18vh;
+  padding-bottom: 3vh;
 }
 
 .news{
-  height: 30vh;
+  height: 60vh;
+ 
 }
 
-.newss{
-  background-color: red;
-  
-}
+
 
 .about-content{
   display: flex;
 
 }
 
-p{
-  font-size: 2.1vh;
-  line-height: 1.8em;
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-
-.about-content-content{
-  font-family: 'Lora', serif;
-}
 
 .description{
   font-family: 'Lora';
+}
+
+.navvy{
+  font-family: 'Lora';
+  text-decoration: none;
+  color: black;
+}
+.title:hover{
+  text-decoration: underline !important;
 }
